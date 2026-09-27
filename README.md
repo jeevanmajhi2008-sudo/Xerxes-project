@@ -1,4 +1,4 @@
-🕸️ Karen's Ear(Lnk -https://claude.ai/artifact/LHTsnHtrovjtAeq6bbP8CD)
+🕸️ Karen's Ear(Link -https://claude.ai/artifact/LHTsnHtrovjtAeq6bbP8CD)
 
 AI-Assisted Emergency Dispatch & Threat-Alert System — NYC Prototype
 
