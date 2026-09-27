@@ -76,7 +76,7 @@ Roadmap
  Validated real-world incident schema, signed off against an actual dispatch protocol
 License
 
-MIT — use, modify, and share freely.
+MIT - use, modify, and share freely.
 
 Disclaimer
 
