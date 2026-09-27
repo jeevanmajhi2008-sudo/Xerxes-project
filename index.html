@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Karen's Ear — AI Dispatch Alert System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="suit-stripe"></div>
+
+<div class="corner-web corner-web-tl">
+  <svg viewBox="0 0 260 260">
+    <g stroke="#000000" stroke-width="1.4" fill="none" stroke-linecap="round">
+      <line x1="0" y1="0" x2="260" y2="0"/>
+      <line x1="0" y1="0" x2="251" y2="67"/>
+      <line x1="0" y1="0" x2="225" y2="130"/>
+      <line x1="0" y1="0" x2="184" y2="184"/>
+      <line x1="0" y1="0" x2="130" y2="225"/>
+      <line x1="0" y1="0" x2="67" y2="251"/>
+      <line x1="0" y1="0" x2="0" y2="260"/>
+      <path d="M50,0 A50,50 0 0 1 0,50"/>
+      <path d="M100,0 A100,100 0 0 1 0,100"/>
+      <path d="M150,0 A150,150 0 0 1 0,150"/>
+      <path d="M200,0 A200,200 0 0 1 0,200"/>
+      <path d="M250,0 A250,250 0 0 1 0,250"/>
+    </g>
+  </svg>
+</div>
+<div class="corner-web corner-web-br">
+  <svg viewBox="0 0 260 260">
+    <g stroke="#000000" stroke-width="1.4" fill="none" stroke-linecap="round">
+      <line x1="0" y1="0" x2="260" y2="0"/>
+      <line x1="0" y1="0" x2="251" y2="67"/>
+      <line x1="0" y1="0" x2="225" y2="130"/>
+      <line x1="0" y1="0" x2="184" y2="184"/>
+      <line x1="0" y1="0" x2="130" y2="225"/>
+      <line x1="0" y1="0" x2="67" y2="251"/>
+      <line x1="0" y1="0" x2="0" y2="260"/>
+      <path d="M50,0 A50,50 0 0 1 0,50"/>
+      <path d="M100,0 A100,100 0 0 1 0,100"/>
+      <path d="M150,0 A150,150 0 0 1 0,150"/>
+      <path d="M200,0 A200,200 0 0 1 0,200"/>
+      <path d="M250,0 A250,250 0 0 1 0,250"/>
+    </g>
+  </svg>
+</div>
+
+<div class="web-bg">
+  <svg viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice">
+    <g stroke="#000000" stroke-width="1" fill="none">
+      <path d="M-100,100 L900,900"/><path d="M-100,220 L780,900"/><path d="M-100,340 L660,900"/>
+      <path d="M-100,460 L540,900"/><path d="M-100,580 L420,900"/><path d="M-100,700 L300,900"/>
+      <path d="M20,-100 L900,780"/><path d="M140,-100 L900,660"/><path d="M260,-100 L900,540"/>
+      <path d="M380,-100 L900,420"/><path d="M500,-100 L900,300"/><path d="M620,-100 L900,180"/>
+      <path d="M-100,-100 L900,900"/>
+    </g>
+  </svg>
+</div>
+
+<div class="wrap">
+  <header>
+    <div class="logo">🕸️</div>
+    <div>
+      <h1>KAREN'S EAR <span class="ai-tag"><span class="pulse-dot"></span>AI ENGINE LIVE</span></h1>
+      <p class="subtitle">Autonomous emergency dispatch &amp; threat-alert system — NYC prototype</p>
+    </div>
+  </header>
+  <p class="tagline">Talk to Karen like a dispatcher, not a form. She reads every report, works out the threat and its severity herself, and dispatches units — no rank picker, no dropdowns. Tell her she got it wrong and she'll fix it on the spot and remember the phrasing for next time.</p>
+
+  <div class="alert-bar">
+    <div class="alert-bar-head" id="alertBarHead">✅ ALL CLEAR — NO ACTIVE INCIDENTS</div>
+    <div class="alert-list" id="alertList"></div>
+  </div>
+
+  <div class="grid">
+    <!-- LEFT COLUMN -->
+    <div>
+      <div class="panel">
+        <h2>AI Dispatcher Chat <span class="h2-flag">LIVE</span></h2>
+
+        <div class="chat-log" id="chatLog">
+          <div class="chat-msg bot">
+            <div class="chat-bubble">Karen, AI Voice Assistant. Report it and I'll rank it, classify it, and dispatch it myself.</div>
+          </div>
+        </div>
+
+        <div class="section-label">Quick real-event reports</div>
+        <div class="chip-group" id="quickExamples"></div>
+
+        <div class="section-label" style="margin-top:16px;">Report intake</div>
+        <label for="desc">Incident report <span class="hint">— type it, speak it, or let Karen sense it live</span></label>
+        <div class="desc-row">
+          <textarea id="desc" placeholder="Describe what's happening..."></textarea>
+          <button class="mic-btn" id="micBtn" type="button" title="Speak the report to Karen" aria-label="Speak the report to Karen">🎙️</button>
+        </div>
+        <div class="ai-pill" id="aiPill"><span class="spin"></span><span id="aiPillText">AI IDLE — awaiting a report</span></div>
+        <div class="karen-status" id="karenStatus">Standing by. Try not to waste my time.</div>
+
+        <label class="voice-toggle" for="liveSensing" style="margin-top:14px;">
+          <input type="checkbox" id="liveSensing">
+          <span>Karen senses reports live <span class="live-badge" id="liveBadge" style="display:none;">● LIVE</span></span>
+        </label>
+
+        <button class="btn-primary" id="logBtn">Send</button>
+      </div>
+
+      <div class="panel">
+        <h2>Voice &amp; Location Access <span class="h2-flag">INPUT</span></h2>
+
+        <div class="section-label">Phone line</div>
+        <div class="call-bar">
+          <button class="call-btn" id="callBtn" type="button">📞 Call Voice AI Assistant</button>
+          <span class="call-status" id="callStatus">Karen's off the line.</span>
+        </div>
+
+        <div class="section-label" style="margin-top:14px;">Location</div>
+        <div class="call-bar">
+          <button class="call-btn loc-btn" id="locBtn" type="button">📍 Use my location</button>
+          <span class="call-status" id="locStatus">Borough not auto-detected yet.</span>
+        </div>
+
+        <div class="section-label" style="margin-top:14px;">Output</div>
+        <label class="voice-toggle" for="voiceReplies">
+          <input type="checkbox" id="voiceReplies" checked>
+          <span>Karen speaks dispatch confirmations</span>
+        </label>
+
+        <div class="section-label" style="margin-top:14px;">Weather context (fetched)</div>
+        <div class="weather-box" id="weatherBox"></div>
+      </div>
+
+      <div class="panel">
+        <h2>CCTV Camera Detection <span class="h2-flag">MOTION</span></h2>
+        <div class="call-bar">
+          <button class="call-btn loc-btn" id="cctvBtn" type="button">📹 Start camera</button>
+          <span class="call-status" id="cctvStatus">Camera off.</span>
+        </div>
+        <div class="cctv-frame" id="cctvFrame" style="display:none;">
+          <video id="cctvVideo" autoplay muted playsinline></video>
+        </div>
+        <div class="motion-meter" id="motionMeterWrap" style="display:none;">
+          <div class="motion-bar"><div class="motion-fill" id="motionFill"></div></div>
+          <span class="motion-label" id="motionLabel">Low activity</span>
+        </div>
+        <button class="btn-resolve" type="button" id="flagActivityBtn" style="margin-top:10px; display:none;">📹 Flag current camera activity</button>
+        <p class="overflow-note">Real camera feed and real frame-by-frame motion analysis (not simulated) — flags a rise in movement, not what's causing it. This page can't load a trained vision model to identify people, fire, or weapons on camera: model downloads are blocked by the browser sandbox a published page runs in, so this stays at motion-level detection, not object recognition.</p>
+      </div>
+
+      <div class="panel" id="correctionPanel" style="display:none;">
+        <h2>Correct Classification <span class="h2-flag">MANUAL</span></h2>
+        <label style="margin-top:0;">Threat category <span class="hint">(pick from the dropdown, or tap a chip)</span></label>
+        <select id="catSelect" class="dropdown-select"></select>
+        <div class="chip-group" id="catChips" style="margin-top:10px;"></div>
+        <div class="rank-preview" id="rankPreview" style="margin-top:8px; font-size:0.8rem; color:var(--muted);"></div>
+        <label>Borough <span class="hint">(pick from the dropdown, or tap a chip)</span></label>
+        <select id="boroughSelect" class="dropdown-select"></select>
+        <div class="chip-group" id="boroughChips" style="margin-top:10px;"></div>
+        <button class="btn-primary" type="button" id="finalizeManualBtn" style="margin-top:10px; display:none;">Dispatch this</button>
+        <button class="btn-resolve" type="button" id="closeCorrectionBtn" style="margin-top:10px;">Done</button>
+      </div>
+
+      <div class="panel">
+        <h2>Borough Unit Status <span class="h2-flag">FLEET</span></h2>
+        <div class="borough-list" id="boroughStatus"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="panel">
+      <h2>Live dispatch alerts <span class="h2-flag" id="queueCountFlag">0 ACTIVE</span></h2>
+      <div class="alert-cards" id="alertCards"></div>
+      <div class="queue-empty" id="queueEmpty">No pending incidents. Log one on the left to see triage in action.</div>
+      <p class="overflow-note">Alerts sort strictly by severity rank, then arrival order. Unit assignment is recalculated live from the full pending queue every time an incident is logged or resolved.</p>
+    </div>
+  </div>
+
+  <div class="panel map-panel">
+    <h2>NYC dispatch map <span class="h2-flag">COVERAGE HIGHLIGHTED</span></h2>
+    <div class="map-wrap">
+      <svg id="nycMapSvg" viewBox="0 0 620 660" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Road-atlas style map of NYC with the five boroughs highlighted in yellow as Karen's Ear active dispatch coverage">
+        <rect x="0" y="0" width="620" height="660" fill="#cfe3ef"/>
+        <g class="water-label">
+          <text x="55" y="55">NEW JERSEY</text>
+          <text x="555" y="120">LONG ISLAND</text>
+          <text x="130" y="245" transform="rotate(-80 130 245)">HUDSON RIVER</text>
+          <text x="360" y="105">LONG ISLAND SOUND</text>
+          <text x="325" y="220" transform="rotate(-55 325 220)">EAST RIVER</text>
+          <text x="205" y="440">UPPER NEW YORK BAY</text>
+          <text x="425" y="530">JAMAICA BAY</text>
+          <text x="270" y="635">ATLANTIC OCEAN</text>
+        </g>
+        <g id="webRings"></g>
+        <g id="boroughShapes"></g>
+        <g id="highwayLines"></g>
+        <g id="webStrands"></g>
+        <g id="highwayShields"></g>
+        <g id="landmarks"></g>
+        <g id="dispatchMarkers"></g>
+        <g id="incidentMarkers"></g>
+        <g id="hubNode"></g>
+      </svg>
+      <div class="map-legend">
+        <h3>Legend</h3>
+        <div class="legend-item"><span class="legend-swatch" style="background:#f6e27a; border-radius:3px;"></span> Active dispatch coverage (all 5 boroughs)</div>
+        <div class="legend-item"><span class="legend-swatch marker"></span> Dispatch facility</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:var(--red-bright); border-radius:3px;"></span> Karen's Ear network core</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:#c0392b; border-radius:1px; height:3px;"></span> Bridge / highway corridor</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:var(--s1)"></span> Critical — Active Shooter / Explosion</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:var(--s2)"></span> High — Structural Fire / Building Collapse</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:var(--s3)"></span> Moderate — Hazmat / Severe Weather</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:var(--s4)"></span> Low — Medical Emergency / Gas Leak</div>
+        <div class="legend-item"><span class="legend-swatch" style="background:var(--s5)"></span> Minimal — Vehicle Collision / Public Disturbance</div>
+        <p class="overflow-note" style="margin-top:2px;">Yellow marks Karen's active coverage across all five boroughs. Red lines are the bridge/tunnel corridors linking them; the dashed red strands are the AI dispatch network reaching out from the core. Dots pulse while a rank 1–2 bundle is active there.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
